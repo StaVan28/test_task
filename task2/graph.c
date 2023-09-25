@@ -212,8 +212,6 @@ static char* graph_bfs (graph* grph, int start_vertex, int order)
     }
     else if (order == AGAINST)
     {
-        int iii = 0;
-
         while (!queue_is_empty (queu))
         {
             int pop_vertex = queue_pop (queu);
@@ -226,8 +224,6 @@ static char* graph_bfs (graph* grph, int start_vertex, int order)
                     queue_push (queu, grph->buf_vertices[pop_vertex].in_arcs[i]);
                 }
             }
-
-            iii++;
         }
     }
 
