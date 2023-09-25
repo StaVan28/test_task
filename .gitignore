@@ -1,3 +1,7 @@
 *.out
 *.o
 *.vim
+*.txt
+*.dot
+*.jpeg
+Outs/*
