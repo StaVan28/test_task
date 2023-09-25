@@ -232,7 +232,7 @@ void parser_stdio_dump (parser_stdio* ps)
 
     fprintf (dump,     "}\n"
                        "|-------------------------------------|\n"
-                       "|           END DUMP QUEUE            |\n"
+                       "|        END DUMP PARSER STDIO        |\n"
                        "|-------------------------------------|\n"
                        );
 
