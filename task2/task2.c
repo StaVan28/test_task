@@ -18,8 +18,6 @@ int main (const int argc, const char* argv[])
         exit    (EXIT_FAILURE);
     }
 
-    parser_stdio* ps = parser_stdio_construct ();
-
     parser_stdio_dump (ps);
 
     graph* grph = graph_construct (ps);
