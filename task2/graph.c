@@ -53,6 +53,12 @@ static void swap           (int* a, int* b);
 
 graph* graph_construct (parser_stdio* ps)
 {
+    if (ps == NULL)
+    {
+        perror ("ps == NULL\n");
+        exit   (EXIT_FAILURE);
+    }
+
     graph* grph = (graph*) calloc (1, sizeof(graph));
     if    (grph == NULL)
     {
@@ -311,6 +317,9 @@ void graph_dump (graph* grph)
 
 static void fprintf_arcs (FILE* grph_file, graph* grph)
 {
+    assert (grph_file);
+    assert (grph); 
+
     for (int i = 0; i < grph->num_of_vertices; i++)
     {
         if (grph->alive_vertices[i])
@@ -435,3 +444,4 @@ static void swap (int* a, int* b)
     *a = *b;
     *b = temp;
 }
+

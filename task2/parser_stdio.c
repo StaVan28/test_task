@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <errno.h>
+#include <assert.h>
 
 #include "parser_stdio.h"
 
@@ -124,6 +125,8 @@ static int get_one_num_in_line (void)
 
 static int get_num (char** buf_num, char last_symb)
 {
+    assert (buf_num);
+
     if (!(isdigit (**buf_num) || **buf_num == '-' || **buf_num == '+'))
     {
         fprintf (stderr, "ERROR! isdigit(): start char is not a number...\n");

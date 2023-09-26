@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <assert.h>
 
 #include "queue_settings.h"
 #include "queue.h"
@@ -49,6 +50,12 @@ queue* queue_construct (int capacity)
 
 void queue_destruct (queue* queu)
 {
+    if (queu == NULL)
+    {
+        perror ("queu == NULL");
+        exit   (EXIT_FAILURE);
+    }
+
     free (queu->buf_vertices);
     free (queu);
 }
@@ -57,6 +64,8 @@ void queue_destruct (queue* queu)
 
 static void queue_resize (queue* queu)
 {
+    assert (queu);
+
     int* new_buf_vertices = (int*) calloc (2 * queu->capacity, sizeof(int));
     if (new_buf_vertices == NULL)
     {
@@ -190,6 +199,12 @@ void queue_dump (queue* queu)
 
 char queue_is_empty (queue* queu)
 {
+    if (queu == NULL)
+    {
+        fprintf (stderr, "ERROR! queu == NULL\n");
+        exit    (EXIT_FAILURE);
+    }
+
     return queu->cur_size == 0;
 }
 
@@ -197,6 +212,12 @@ char queue_is_empty (queue* queu)
 
 int queue_size (queue* queu)
 {
+    if (queu == NULL)
+    {
+        fprintf (stderr, "ERROR! queu == NULL\n");
+        exit    (EXIT_FAILURE);
+    }
+
     return queu->cur_size;
 }
 
