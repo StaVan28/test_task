@@ -4,4 +4,4 @@
 *.txt
 *.dot
 *.jpeg
-Outs/*
+*/Outs/*
