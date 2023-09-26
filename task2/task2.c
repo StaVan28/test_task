@@ -17,8 +17,7 @@ int main (const int argc, const char* argv[])
         fprintf (stderr, "ERROR! Execute: %s\n", argv[0]);
         exit    (EXIT_FAILURE);
     }
-
-    parser_stdio_dump (ps);
+    parser_stdio* ps = parser_stdio_construct ();
 
     graph* grph = graph_construct (ps);
 
