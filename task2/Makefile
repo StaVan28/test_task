@@ -3,7 +3,7 @@
 #--------------------------------------------------------------------------------------
 
 # Makefile for task2
-# version 1.0
+# version 1.1
 #		author: Starchenko Ivan
 
 #--------------------------------------------------------------------------------------
@@ -13,8 +13,8 @@
 # project name
 PROJECT = task2
 
-# choose release or debug mode
-LAUNCH_MD = debug
+# choose release, debug, fastest mode
+LAUNCH_MD = fastest
 
 Q = @  
 E = $(Q) echo
@@ -30,14 +30,18 @@ CXX      = gcc
 WARNINGS = -Wall -Wextra
 CXXFLAGS = 
 
-DBG_MD = -g3 -O0
-RLS_MD = -g0 -O2
+DBG_MD   = -g3 -O0
+RLS_MD   = -g0 -O3
+FSTST_MD = $(RLS_MD) -flto -fwhole-program
 
 
 ifeq ($(LAUNCH_MODE),debug)
 	CXXFLAGS += $(DBG_MD)
-else
+else ifeq ($(LAUNCH_MODE), release)
 	CXXFLAGS += $(RLS_MD)
+else
+	CXXFLAGS += $(FSTST_MD)
+	WARNINGS += $(FSTST_MD)
 endif
 
 #--------------------------------------------------------------------------------------
@@ -62,7 +66,7 @@ $(BIN): $(OBJ)
 ## compiling
 %.o: %.c
 	$(E) "    C:           " $@
-	$(Q) ${CXX} -c $(DBG_MD) $< -o $@
+	$(Q) ${CXX} -c $(CXXFLAGS) $< -o $@
 
 task.o: task.c
 
