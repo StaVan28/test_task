@@ -8,24 +8,62 @@
 
 //------------------------------------------------------------
 
-static const char* PS_DUMP_PATH = "./parser_stdio_dump.txt";
+static const char* PS_DUMP_PATH = "./parser_stdio_dump.txt"; //!< path to parser_stdio dump
 
-static const int MIN_NUM_OF_ARCS = 0;
-static const int MAX_NUM_OF_ARCS = 10000000;
+static const int MIN_NUM_OF_ARCS = 0;                        //!< according to the problem conditions
+static const int MAX_NUM_OF_ARCS = 10000000;                 //!< according to the problem conditions
 
-static const int MIN_NUM_OF_VERTICES = 2;
-static const int MAX_NUM_OF_VERTICES = 1000000;
+static const int MIN_NUM_OF_VERTICES = 2;                    //!< according to the problem conditions
+static const int MAX_NUM_OF_VERTICES = 1000000;              //!< according to the problem conditions
 
 //-----
 
-#define SIZE_NUM 8
+#define SIZE_NUM 8  //!< number of digits in MAX_NUM_OF_ARCS
 
 //------------------------------------------------------------
 
+/*! Get one number in line end with '\\n'
+    @param[in] None
+    @return int num
+    @version 1.0
+    @authors StaVan28
+
+    Get one number in line end with '\\n'.
+    fgets() a string and call get_num().
+
+*/
 static int  get_one_num_in_line (void);
 
+//--------
+
+/*! Get one number in line, which end with '\\n'
+    @param[out] char** buf_num start reading number
+    @param[in]  char last_symb symbol after number 
+    @return int num
+    @version 1.0
+    @authors StaVan28
+
+    Get number from string\n
+    start line> '1', '0', '0', '0', '0', '0', 'last char'\n\n
+
+    If the line does not start with a number and does not end with 'last char',
+    it generates an error.
+*/
 static int  get_num             (char** buf_num, char last_symb);
 
+//--------
+
+/*! Get a arc from line, which end with '\\n'
+    @param[out] int* buf_vertices pointer of buf_vertces[2]
+    @return void
+    @version 1.0
+    @authors StaVan28
+
+    Get a arc in line end with '\\n'. 
+    fgets() a string and call 2 get_num(). 
+    Put 2 nums in buf_vertices[0] and buf_vertices[1]
+
+*/
 static void get_arc             (int* buf_vertices);
 
 //------------------------------------------------------------

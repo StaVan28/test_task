@@ -3,7 +3,7 @@
 #--------------------------------------------------------------------------------------
 
 # Makefile for task2
-# version 1.1
+# version 1.2
 #		author: Starchenko Ivan
 
 #--------------------------------------------------------------------------------------
@@ -14,7 +14,7 @@
 PROJECT = task2
 
 # choose release, debug, fastest mode
-LAUNCH_MD = fastest
+LAUNCH_MD = debug
 
 Q = @  
 E = $(Q) echo
@@ -25,6 +25,8 @@ HDR =              graph.h graph_settings.h queue.h queue_settings.h parser_stdi
 SRC = $(PROJECT).c graph.c                  queue.c                  parser_stdio.c
 OBJ = $(SRC:%.c=%.o)
 
+DOXYFILE = Doxyfile
+
 # compiler settings
 CXX      = gcc 
 WARNINGS = -Wall -Wextra
@@ -33,7 +35,6 @@ CXXFLAGS =
 DBG_MD   = -g3 -O0
 RLS_MD   = -g0 -O3
 FSTST_MD = $(RLS_MD) -flto -fwhole-program
-
 
 ifeq ($(LAUNCH_MODE),debug)
 	CXXFLAGS += $(DBG_MD)
@@ -79,10 +80,14 @@ strace: $(BIN)
 #
 ## additional features
 clean:
-	$(E) "  CLEAN"
-	$(Q) rm *.o $(BIN) *.dot *.jpeg *.txt Outs/*
+	$(E) "    CLEAN"
+	$(Q) rm -rf *.o $(BIN) *.dot *.jpeg *.txt Outs/* html 2> /dev/null
 
 rebuild: clean default
+
+docs:
+	$(E) "    DOXYGEN"
+	doxygen $(DOXYFILE)
 
 #
 ## gdb

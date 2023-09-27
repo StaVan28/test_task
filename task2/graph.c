@@ -11,42 +11,119 @@
 
 //------------------------------------------------------------
 
-static const int  START_VERTEX = 0;
+static const int  START_VERTEX = 0;          //< logic number of start vertex
 
-static const int POISON_VERTEX = 0x00DEAD00;
+static const int POISON_VERTEX = 0x00DEAD00; //< poison value for vertex
 
 //------------------------------------------------------------
 
+/// Vertex state set
 enum CONDITIONS_VERTEX
 {
-    DEAD  = 0,
-    ALIVE = 1,
+    DEAD  = 0, //< Vertex dead
+    ALIVE = 1, //< Vertex alive
 };
 
 //-----
 
+/// Graph traversal direction
 enum DIRECTION_ARCS
 {
-    AGAINST = 0,
-    IN      = 1,
+    AGAINST = 0, //< from START to STOP
+    IN      = 1, //< from STOP  to START
 };
 
 //------------------------------------------------------------
 
-static char*  graph_bfs              (graph* grph, int start_vertex, int order);
+/*! BFS
+    @param[in] graph* grph         pointer on alloc struct graph
+    @param[in] int    start_vertex vertex to start traversing the graph
+    @param[in] int    order        graph traversal direction
+    @return    char*  visited_buf  pointer on visited verticies
+    @version 1.0
+    @authors StaVan28
+    @warning Calloc visited_buf. Plz use graph_free_visited_buf() for free.
 
+    Realizstion of bfs with order.
+*/
+static char*  graph_bfs              (graph* grph, int start_vertex, int order);
+              
+//--------
+
+/*! Free visited buff
+    @param[in] char* visited_buf pointer on visited buf
+    @return None
+    @version 1.0
+    @authors StaVan28
+    @warning Use only with grph_bfs() return.
+*/
 static void   graph_free_visited_buf (char* visited_buf);
 
 
+//--------
+
+
+/*! Fprintf alive nodes in dump
+    @param[in] FILE*  grph_file dump pointer
+    @param[in] graph* grph      pointer on alloc struct graph
+    @return None
+    @version 1.0
+    @authors StaVan28
+
+    Fprintf declarations of alive nodes in dump.
+*/
 static void fprintf_declaration_nodes (FILE* grph_file, graph* grph);
 
+//--------
+
+/*! Fprintf start and stop nodes
+    @param[in]  FILE*       grph_file dump pointer
+    @param[in]  graph*      grph      pointer on alloc struct graph
+    @param[in]  const char* name_node names "start" or "stop"
+    @param[out] int*        vertex    number of vertex
+    @return None
+    @version 1.0
+    @authors StaVan28
+
+    Fprintf info about start and stop nodes
+*/
 static void fprintf_special_node      (FILE* grph_file, graph* grph, const char* name_node, int* i_vertex);
 
+//--------
+
+/*! Fprintf alive arcs
+    @param[in]  FILE*       grph_file dump pointer
+    @param[in]  graph*      grph      pointer on alloc struct graph
+    @return None
+    @version 1.0
+    @authors StaVan28
+
+    Fprintf alive arcs in dump.
+*/
 static void fprintf_arcs              (FILE* grph_file, graph* grph);
 
 
+//--------
+
+
+/*! Classic realization of selection sort
+    @param[out] int* array pointer array to sort
+    @param[in]  int  size  size of array
+    @return None
+    @version 1.0
+    @authors StaVan28
+*/
 static void selection_sort (int* array, int size);
 
+//--------
+
+/*! swap to elements
+    @param[out] int* a first element
+    @param[out] int* b second element
+    @return None
+    @version 1.0
+    @authors StaVan28
+*/
 static void swap           (int* a, int* b);
 
 //------------------------------------------------------------
@@ -444,4 +521,3 @@ static void swap (int* a, int* b)
     *a = *b;
     *b = temp;
 }
-

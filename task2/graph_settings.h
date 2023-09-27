@@ -3,7 +3,7 @@
 
 //------------------------------------------------------------
 
-const char* GRAPH_DUMP_PATH = "./graph_dump.dot";
+const char* GRAPH_DUMP_PATH = "./graph_dump.dot"; //!< path to graph dump
 
 //------------------------------------------------------------
 

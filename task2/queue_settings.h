@@ -3,7 +3,7 @@
 
 //------------------------------------------------------------
 
-const char* QUEUE_DUMP_PATH = "./queue_dump.txt";
+const char* QUEUE_DUMP_PATH = "./queue_dump.txt"; //!< path to queue dump
 
 //------------------------------------------------------------
 

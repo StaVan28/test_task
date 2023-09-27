@@ -2,10 +2,11 @@
 
 ## Installation
 
-Для корректной работы программы требуется GraphViz
+Для корректной работы программы требуется GraphViz и Doxygen
 
 ```sh
-sudo install apt-get graphviz (debian)
+sudo apt-get install graphviz                        # debian
+sudo apt-get install doxygen doxygen-doc doxygen-gui # debian
 ```
 
 ## Launch
@@ -28,13 +29,20 @@ make
 ./launch_tests.sh
 ```
 
+Для создания и просмотра документации с помощью браузера firefox
+
+```sh
+make docs
+firefox html/index.html
+```
+
 Также я использую удобный для меня и дебага скрипт запуска всего-всего и просмотра всех дампов.
 ```sh
 ./m
 ```
 
-ALERT: используется консольный просматриватель jpeg: feh
+ALERT: используется консольный просматриватель jpeg: feh.
 Его надо устанавить отдельно или поменять в скрипте
 ```sh
-sudo install apt-get feh (debian)
+sudo apt-get install feh # debian
 ```

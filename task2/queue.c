@@ -8,10 +8,18 @@
 
 //------------------------------------------------------------
 
-static const int POISON_VERTEX = 0x00DEAD00;
+static const int POISON_VERTEX = 0x00DEAD00; //< poison value for vertex
 
 //------------------------------------------------------------
 
+/*! Resize a queue
+    @param [in] int capacity capacity to init struct
+    @return pointer on alloc struct queue
+    @version 1.0
+    @authors StaVan28
+
+    Increase capacity and copy elements in correct order. 
+*/
 static void queue_resize (queue* queu);
 
 //------------------------------------------------------------
