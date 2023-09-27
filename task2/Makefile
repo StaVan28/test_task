@@ -29,7 +29,7 @@ DOXYFILE = Doxyfile
 
 # compiler settings
 CXX      = gcc 
-WARNINGS = -Wall -Wextra
+WARNINGS = -Wall -Wextra -std=c11
 CXXFLAGS = 
 
 DBG_MD   = -g3 -O0
